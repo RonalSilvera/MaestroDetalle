@@ -1,0 +1,59 @@
+﻿
+@{
+}
+ @model MaestroDetalle.Models.Tareas
+
+ <div class="container">
+     <h2 class="text-center mt-4">  Eliminar Tarea </h2>
+
+     <div class="card">
+         <div class="card-body">
+             <h4 class="card-title">Tareas</h4>
+             </hr>
+
+             <dl class="row">
+                 <dt class="col-sm-3">ID de la tarea</dt>
+                 <dd class="col-sm-9">@Model.TareaId</dd>
+
+                <dt class="col-sm-3">Nombre de la tarea</dt>
+                <dd class="col-sm-9">@Model.Nombre</dd>
+
+                <dt class="col-sm-3">Descripcion</dt>
+                <dd class="col-sm-9">@Model.Descripcion</dd>
+
+                
+
+             </dl>
+
+             <h4 class="card-title mt-4">Detalles de la tarea</h4>
+             <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var detalle in Model.Detalles)
+                        {
+                            <tr>
+                                <td>@detalle.FechaInicio</td>
+                                <td>@detalle.FechaFin</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+             </div>
+         </div>
+     </div>
+
+     <form asp-action="Delete" asp-route-id="@Model.TareaId" method="post">
+         
+         <div class="fprm-group mt-4">
+                <input type="submit" value="Eliminar" class="btn btn-danger">
+                <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
+         </div>   
+     </form>
+
+ </div>

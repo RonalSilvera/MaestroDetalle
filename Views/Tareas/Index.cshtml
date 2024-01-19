@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<MaestroDetalle.Models.Tareas>
+
+        <div class=" container mt-4">
+
+            <h2>Listado de Tareas</h2>
+            <a class="btn btn-primary mb-2" asp-action="Create">Crear nueva tarea</a>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var tareas in Model)
+                    {
+                        <tr>
+                            <td>@tareas.Nombre</td>
+                            <td>@tareas.Descripcion</td>
+                            
+                            <td>
+                                <div class="btn-group">
+                                    <a class = "btn btn-info btn-sm" asp-action="Details" asp-route-id="@tareas.TareaId">Detalles</a>
+                                    <a class = "btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@tareas.TareaId">Editar</a>
+                                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@tareas.TareaId">Eliminar</a>     
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
